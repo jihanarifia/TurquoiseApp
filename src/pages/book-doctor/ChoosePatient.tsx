@@ -9,7 +9,7 @@ import {strings} from '../../utils/localization';
 import ModalPatient from './ModalPatient';
 
 interface RootState {
-  patienceList: any;
+  patientList: any;
   selectedPatient: any;
 }
 
@@ -17,7 +17,7 @@ const ChoosePatient = () => {
   const [showPatient, setShowPatient] = React.useState(false);
 
   const state = useSelector((state: RootState) => ({
-    patienceList: state.patienceList,
+    patientList: state.patientList,
     selectedPatient: state.selectedPatient,
   }));
 
@@ -43,7 +43,7 @@ const ChoosePatient = () => {
           <Text style={styles.nameTxt}>{strings.add}</Text>
         </TouchableOpacity>
       </View>
-      {state.patienceList.map((item: any, index: number) => {
+      {state.patientList.map((item: any, index: number) => {
         let selected = getselectedPatient(item.name);
         return (
           <TouchableOpacity

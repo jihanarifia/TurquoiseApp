@@ -16,14 +16,14 @@ import ChoosePatient from './ChoosePatient';
 
 interface RootState {
   type: string;
-  patienceList: any;
+  patientList: any;
   symptompsList: any;
   selectedPatient: any;
   selectedSymptompsReasons: any;
 }
 
 const mapState = (state: RootState) => ({
-  patienceList: state.patienceList,
+  patientList: state.patientList,
   selectedPatient: state.selectedPatient,
   symptomps: state.symptompsList,
   selectedSymptompsReasons: state.selectedSymptompsReasons,

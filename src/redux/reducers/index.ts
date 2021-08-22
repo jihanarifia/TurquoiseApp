@@ -3,7 +3,7 @@ import {IData} from '../types';
 
 const initialState = {
   selectedPatient: [],
-  patienceList: [
+  patientList: [
     {
       name: 'Yarik Nikolenko',
     },
@@ -151,10 +151,10 @@ const reducer = (
       };
 
     case Types.ADD_PATIENT:
-      let addPatient = [{name: action.payload}, ...state.patienceList];
+      let addPatient = [{name: action.payload}, ...state.patientList];
       return {
         ...state,
-        patienceList: addPatient,
+        patientList: addPatient,
       };
 
     default:
