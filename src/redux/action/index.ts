@@ -6,6 +6,7 @@ export const Types = {
   CHOOSE_SYMPTOMPS: 'CHOOSE_SYMPTOMPS',
   CHOOSE_REASON: 'CHOOSE_REASON',
   REMOVE_SELECTED_SYMPTOMPS_REASON: 'REMOVE_SELECTED_SYMPTOMPS_REASON',
+  BOOK_DOCTOR: 'BOOK_DOCTOR',
 };
 
 export const BookDoctorActions = {
@@ -27,6 +28,10 @@ export const BookDoctorActions = {
   }),
   removeSelectedSymptompsReason: (data: IData) => ({
     type: Types.REMOVE_SELECTED_SYMPTOMPS_REASON,
+    payload: data,
+  }),
+  bookDoctor: (data: any) => ({
+    type: Types.BOOK_DOCTOR,
     payload: data,
   }),
 };

@@ -6,9 +6,10 @@ import {COLORS, FONT} from '../utils';
 const SwitchBtn: React.FC<{
   textLeft: string;
   textRight: string;
+  value: string;
   onChange(value: string): void;
-}> = ({textLeft, textRight, onChange}) => {
-  const [type, setType] = useState(textLeft);
+}> = ({textLeft, textRight, onChange, value}) => {
+  const [type, setType] = useState(value || textLeft);
 
   function toggleSwitch(value: string) {
     setType(value);

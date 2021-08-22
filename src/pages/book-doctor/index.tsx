@@ -15,6 +15,7 @@ import {COLORS} from '../../utils';
 import ChoosePatient from './ChoosePatient';
 
 interface RootState {
+  type: string;
   patienceList: any;
   symptompsList: any;
   selectedPatient: any;
@@ -26,12 +27,14 @@ const mapState = (state: RootState) => ({
   selectedPatient: state.selectedPatient,
   symptomps: state.symptompsList,
   selectedSymptompsReasons: state.selectedSymptompsReasons,
+  type: state.type,
 });
 
 const mapDispatch = {
   choosePatient: BookDoctorActions.choosePatient,
   switchType: BookDoctorActions.switchType,
   chooseSymptomps: BookDoctorActions.chooseSymptomps,
+  bookDoctor: BookDoctorActions.bookDoctor,
 };
 
 const connector = connect(mapState, mapDispatch);
@@ -50,6 +53,7 @@ const BookDoctorScreen = (props: Props) => {
         <SwitchBtn
           textLeft={strings.doctor}
           textRight={strings.videoConsult}
+          value={props.type}
           onChange={value => props.switchType(value)}
         />
 
@@ -84,7 +88,13 @@ const BookDoctorScreen = (props: Props) => {
 
         <Button
           title={strings.next}
-          onPress={() => {}}
+          onPress={() => {
+            // props.bookDoctor({
+            //   type,
+            //   SelectedSymptompsReason,
+              // schedule,
+            // });
+          }}
           style={styles.buttonSubmit}
           backgroundColor={COLORS.PRIMARY}
           textColor={COLORS.WHITE}

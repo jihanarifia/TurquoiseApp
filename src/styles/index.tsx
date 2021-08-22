@@ -82,6 +82,27 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: metrics.regularRS,
   },
+  timeText: {
+    color: COLORS.WHITE,
+    fontFamily: FONT.REGULAR,
+    fontSize: metrics.smallRS,
+    marginHorizontal: metrics.smallRS,
+  },
+  timeContainer: {
+    borderRadius: metrics.borderRadius,
+    backgroundColor: COLORS.YELLOW,
+    fontFamily: FONT.MEDIUM,
+    padding: metrics.extraSmallRS,
+  },
+  dateText: {
+    color: COLORS.GREY,
+    fontFamily: FONT.BOLD,
+    fontSize: metrics.regularRS,
+    textAlign: 'center',
+  },
+  dateContainer: {
+    backgroundColor: COLORS.BACKGROUND_SCREEN,
+  },
 });
 
 export {styles};
