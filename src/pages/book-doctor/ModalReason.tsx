@@ -44,6 +44,10 @@ const ModalReason: React.FC<{
           value={input}
           placeholder={strings.placeholderSymptomp}
           onChangeText={setInput}
+          onSubmitEditing={() => {
+            action.addReason(input);
+            setInput('');
+          }}
           style={[
             styles.cardShadow,
             {backgroundColor: COLORS.LIGHT_BLUE, width: metrics.width * 0.87},

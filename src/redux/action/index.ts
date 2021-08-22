@@ -5,6 +5,7 @@ export const Types = {
   SWITCH_TYPE: 'SWITCH_TYPE',
   CHOOSE_SYMPTOMPS: 'CHOOSE_SYMPTOMPS',
   CHOOSE_REASON: 'CHOOSE_REASON',
+  ADD_REASON: 'ADD_REASON',
   REMOVE_SELECTED_SYMPTOMPS_REASON: 'REMOVE_SELECTED_SYMPTOMPS_REASON',
   BOOK_DOCTOR: 'BOOK_DOCTOR',
 };
@@ -24,6 +25,10 @@ export const BookDoctorActions = {
   }),
   chooseReason: (data: IData) => ({
     type: Types.CHOOSE_REASON,
+    payload: data,
+  }),
+  addReason: (data: string) => ({
+    type: Types.ADD_REASON,
     payload: data,
   }),
   removeSelectedSymptompsReason: (data: IData) => ({

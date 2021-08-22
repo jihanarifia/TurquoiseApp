@@ -126,10 +126,12 @@ const reducer = (
       let reason = state.reasonList;
       let symptomp = state.symptompsList;
 
-      if (action.payload.isReason) {
-        reason = [...state.reasonList, action.payload];
-      } else {
-        symptomp = [...state.symptompsList, action.payload];
+      if (action.payload.id) {
+        if (action.payload.isReason) {
+          reason = [...state.reasonList, action.payload];
+        } else {
+          symptomp = [...state.symptompsList, action.payload];
+        }
       }
 
       return {
@@ -137,6 +139,16 @@ const reducer = (
         symptompsList: symptomp,
         selectedSymptompsReasons: selectedData,
         reasonList: reason,
+      };
+
+    case Types.ADD_REASON:
+      let addData = [
+        ...state.selectedSymptompsReasons,
+        {name: action.payload, isReason: false},
+      ];
+      return {
+        ...state,
+        selectedSymptompsReasons: addData,
       };
     default:
       return state;
