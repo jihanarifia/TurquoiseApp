@@ -7,7 +7,7 @@ const Section: React.FC<{
 }> = ({children, title}) => {
   return (
     <View style={styles.sectionContainer}>
-      <View>
+      <View style={styles.sectionTitleContainer}>
         <Text style={[styles.sectionTitle]}>{title}</Text>
       </View>
       <View>{children}</View>
