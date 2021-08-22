@@ -1,4 +1,5 @@
 import {Types} from '../action';
+import {IData} from '../types';
 
 const initialState = {
   selectedPatient: [],
@@ -58,30 +59,85 @@ const initialState = {
     },
   ],
   type: '',
+  selectedSymptompsReasons: [],
 };
 
 const reducer = (
   state = initialState,
-  action: {type: string; payload: object},
+  action: {type: string; payload: any},
 ) => {
   switch (action.type) {
     case Types.CHOOSE_PATIENT:
-      console.log(action.payload)
       let selectedPatient;
       let idx: number = state.selectedPatient.findIndex(
-        (x: any) => x === action.payload,
+        (x: IData) => x === action.payload,
       );
 
       if (idx >= 0) {
         selectedPatient = state.selectedPatient.filter(
-          (x: any) => x !== action.payload,
+          (x: IData) => x !== action.payload,
         );
       } else {
         selectedPatient = [...state.selectedPatient, action.payload];
       }
       return {...state, selectedPatient: selectedPatient};
+
     case Types.SWITCH_TYPE:
       return {...state, type: action.payload};
+
+    case Types.CHOOSE_SYMPTOMPS:
+      let symptompsList, selectedSymptom;
+
+      selectedSymptom = [
+        ...state.selectedSymptompsReasons,
+        {...action.payload, isReason: false},
+      ];
+      symptompsList = state.symptompsList.filter(
+        (x: IData) => x.name !== action.payload?.name,
+      );
+      return {
+        ...state,
+        symptompsList: symptompsList,
+        selectedSymptompsReasons: selectedSymptom,
+      };
+
+    case Types.CHOOSE_REASON:
+      let reasonList, selectedReason;
+
+      selectedReason = [
+        ...state.selectedSymptompsReasons,
+        {...action.payload, isReason: true},
+      ];
+      reasonList = state.reasonList.filter(
+        (x: IData) => x.name !== action.payload?.name,
+      );
+
+      return {
+        ...state,
+        reasonList: reasonList,
+        selectedSymptompsReasons: selectedReason,
+      };
+
+    case Types.REMOVE_SELECTED_SYMPTOMPS_REASON:
+      let selectedData = state.selectedSymptompsReasons.filter(
+        (x: IData) => x !== action.payload,
+      );
+
+      let reason = state.reasonList;
+      let symptomp = state.symptompsList;
+
+      if (action.payload.isReason) {
+        reason = [...state.reasonList, action.payload];
+      } else {
+        symptomp = [...state.symptompsList, action.payload];
+      }
+
+      return {
+        ...state,
+        symptompsList: symptomp,
+        selectedSymptompsReasons: selectedData,
+        reasonList: reason,
+      };
     default:
       return state;
   }

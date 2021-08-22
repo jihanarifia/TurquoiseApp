@@ -18,22 +18,26 @@ import ModalBottom from '../../components/ModalBottom';
 import SelectedSymptompsReason from './SelectedSymptompsReason';
 import Section from '../../components/Section';
 import Button from '../../components/Button';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {BookDoctorActions} from '../../redux/action';
+import {bindActionCreators} from 'redux';
 
 interface RootState {
-  symptomps: any;
+  reasonList: any;
+  selectedSymptompsReasons: any;
 }
 
-const Reason: React.FC<{
-  title?: string;
-}> = () => {
+const Reason: React.FC = () => {
   const [showReason, setShowReason] = React.useState(false);
   const [showSchedule, setShowSchedule] = React.useState(false);
   const [input, setInput] = React.useState('');
 
   const state = useSelector((state: RootState) => ({
-    symptomps: state.symptomps,
+    reasonList: state.reasonList,
+    selectedSymptompsReasons: state.selectedSymptompsReasons,
   }));
+
+  const action = bindActionCreators(BookDoctorActions, useDispatch());
 
   const ModalReason = () => {
     return (
@@ -49,26 +53,33 @@ const Reason: React.FC<{
             value={input}
             placeholder={strings.placeholderSymptomp}
             onChangeText={setInput}
-            style={[styles.cardShadow, {backgroundColor: COLORS.LIGHT_BLUE}]}
+            style={[
+              styles.cardShadow,
+              {backgroundColor: COLORS.LIGHT_BLUE, width: metrics.width * 0.87},
+            ]}
           />
-          <Section title={strings.selectedSymptomps}>
-            <SelectedSymptompsReason />
-          </Section>
+          {state.selectedSymptompsReasons.length > 0 && (
+            <Section title={strings.selectedSymptomps}>
+              <SelectedSymptompsReason />
+            </Section>
+          )}
 
-          <Section title={strings.chooseYourSymptomps}>
-            <View style={styles.listRowContainer}>
-              {state.symptomps.map((item: any, index: number) => {
-                return (
-                  <Button
-                    key={index}
-                    title={item.name}
-                    iconName={'add'}
-                    onPress={() => {}}
-                  />
-                );
-              })}
-            </View>
-          </Section>
+          {state.reasonList.length > 0 && (
+            <Section title={strings.chooseYourSymptomps}>
+              <View style={styles.listRowContainer}>
+                {state.reasonList.map((item: any, index: number) => {
+                  return (
+                    <Button
+                      key={index}
+                      title={item.name}
+                      iconName={'add'}
+                      onPress={() => action.chooseReason(item)}
+                    />
+                  );
+                })}
+              </View>
+            </Section>
+          )}
         </View>
       </ModalBottom>
     );
@@ -96,8 +107,7 @@ const Reason: React.FC<{
           </View>
 
           <View style={[styles.col, {width: '50%', alignItems: 'center'}]}>
-            
-          <Text style={styles.dateText}>1:00 - 2:00</Text>
+            <Text style={styles.dateText}>1:00 - 2:00</Text>
           </View>
         </View>
       </ModalBottom>

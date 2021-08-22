@@ -18,17 +18,20 @@ interface RootState {
   patienceList: any;
   symptompsList: any;
   selectedPatient: any;
+  selectedSymptompsReasons: any;
 }
 
 const mapState = (state: RootState) => ({
   patienceList: state.patienceList,
   selectedPatient: state.selectedPatient,
   symptomps: state.symptompsList,
+  selectedSymptompsReasons: state.selectedSymptompsReasons,
 });
 
 const mapDispatch = {
   choosePatient: BookDoctorActions.choosePatient,
   switchType: BookDoctorActions.switchType,
+  chooseSymptomps: BookDoctorActions.chooseSymptomps,
 };
 
 const connector = connect(mapState, mapDispatch);
@@ -56,24 +59,28 @@ const BookDoctorScreen = (props: Props) => {
 
         <AddReason />
 
-        <Section title={strings.selectedSymptompsAndReason}>
-          <SelectedSymptompsReason />
-        </Section>
+        {props.selectedSymptompsReasons.length > 0 && (
+          <Section title={strings.selectedSymptompsAndReason}>
+            <SelectedSymptompsReason />
+          </Section>
+        )}
 
-        <Section title={strings.selectedYourSymptompsAndReason}>
-          <View style={styles.listRowContainer}>
-            {props.symptomps.map((item: any, index: number) => {
-              return (
-                <Button
-                  key={index}
-                  title={item.name}
-                  iconName={'add'}
-                  onPress={() => {}}
-                />
-              );
-            })}
-          </View>
-        </Section>
+        {props.symptomps.length > 0 && (
+          <Section title={strings.selectedYourSymptompsAndReason}>
+            <View style={styles.listRowContainer}>
+              {props.symptomps.map((item: any, index: number) => {
+                return (
+                  <Button
+                    key={index}
+                    title={item.name}
+                    iconName={'add'}
+                    onPress={() => props.chooseSymptomps(item)}
+                  />
+                );
+              })}
+            </View>
+          </Section>
+        )}
 
         <Button
           title={strings.next}
