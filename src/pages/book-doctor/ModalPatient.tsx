@@ -6,7 +6,7 @@ import {COLORS} from '../../utils';
 import {strings} from '../../utils/localization';
 import {styles} from '../../styles';
 import ModalBottom from '../../components/ModalBottom';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {BookDoctorActions} from '../../redux/action';
 import {bindActionCreators} from 'redux';
 
@@ -20,11 +20,6 @@ const ModalPatient: React.FC<{
   setShowPatient(value: boolean): void;
 }> = ({showPatient, setShowPatient}) => {
   const [input, setInput] = React.useState('');
-
-  const state = useSelector((state: RootState) => ({
-    reasonList: state.reasonList,
-    selectedSymptompsReasons: state.selectedSymptompsReasons,
-  }));
 
   const action = bindActionCreators(BookDoctorActions, useDispatch());
 
