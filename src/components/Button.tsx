@@ -10,8 +10,18 @@ const Button: React.FC<{
   backgroundColor?: string;
   textColor?: string;
   iconName?: string;
-  onPress?: void;
-}> = ({title, backgroundColor, textColor, iconName, onPress}) => {
+  style?: object;
+  styleText?: object;
+  onPress(): void;
+}> = ({
+  title,
+  backgroundColor,
+  textColor,
+  iconName,
+  onPress,
+  style,
+  styleText,
+}) => {
   return (
     <TouchableOpacity
       style={[
@@ -21,9 +31,15 @@ const Button: React.FC<{
           paddingVertical: metrics.extraSmallRS,
           backgroundColor: backgroundColor || COLORS.WHITE,
         },
+        style,
       ]}
-      onPress={() => onPress}>
-      <Text style={[styles.sectionTitle, {color: textColor || COLORS.PRIMARY}]}>
+      onPress={() => onPress()}>
+      <Text
+        style={[
+          styles.sectionTitle,
+          {color: textColor || COLORS.PRIMARY, textAlign: 'center'},
+          styleText,
+        ]}>
         {title}
         {iconName && (
           <Icon
