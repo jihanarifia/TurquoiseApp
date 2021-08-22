@@ -14,6 +14,7 @@ import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import BookDoctorScreen from './src/pages/book-doctor';
 import reducer from './src/redux/reducers';
+import {strings} from './src/utils/localization';
 
 const newReducer: any = reducer;
 const store = createStore(newReducer);
@@ -23,7 +24,7 @@ const App: React.FC = () => {
     <Provider store={store}>
       <SafeAreaView>
         <StatusBar />
-        <BookDoctorScreen />
+        <BookDoctorScreen title={strings.bookDoctor} />
       </SafeAreaView>
     </Provider>
   );

@@ -5,9 +5,9 @@ const strings = {
   choosePatient: 'Choose Patient:',
   doctor: 'Doctor',
   next: 'Next',
-  selected: 'Selected {0}',
-  selectedYour: 'Selected your {0}',
-  symptompsAndReason: 'symptomps and reasons:',
+  now: 'Now',
+  selectedSymptompsAndReason: 'Selected symptomps and reasons :',
+  selectedYourSymptompsAndReason: 'Selected your symptomps and reasons :',
   videoConsult: 'Video Consult',
 };
 

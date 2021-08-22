@@ -1,8 +1,14 @@
 const COLORS = {
+  PRIMARY: '#30C2D0',
   WHITE: 'white',
-  GREY: '#464141',
+  DARK_GREY: '#3D5066',
+  GREY: '#97A4B1',
   LIGHT_GREY: '#C0C0C0',
   BLACK: '#000000',
+  LIGHT_BLUE: '#ECF4FE',
+  BLUE: '#344659',
+  BACKGROUND_SCREEN: '#FFFDFF',
+  YELLOW: '#EDB258',
 };
 
 const FONT = {
