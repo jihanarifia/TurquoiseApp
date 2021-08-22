@@ -1,7 +1,7 @@
 import {Types} from '../action';
 
 const initialState = {
-  selectedPatient: true,
+  selectedPatient: [],
   patienceList: [
     {
       name: 'Yarik Nikolenko',
@@ -44,7 +44,7 @@ const reducer = (
 ) => {
   switch (action.type) {
     case Types.CHOOSE_PATIENT:
-      return {...state, selectedPatient: !state.selectedPatient};
+      return {...state, selectedPatient: []};
     case Types.SWITCH_TYPE:
       return {...state, type: action.payload};
     default:

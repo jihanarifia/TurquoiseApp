@@ -1,16 +1,18 @@
 import React, {FC} from 'react';
-import {Text, View, StyleSheet, Modal} from 'react-native';
+import {Text, View, StyleSheet, Modal, ScrollView} from 'react-native';
 import {COLORS, FONT} from '../utils';
 import {styles as globalStyles} from '../styles';
 import {strings} from '../utils/localization';
 import metrics from '../styles/metrics';
 import Button from './Button';
+
 type Props = {
   visible: boolean;
   onRequestClose(): void;
   title: string;
   desc?: string;
 };
+
 const ModalBottom: FC<Props> = ({
   visible,
   onRequestClose,
@@ -26,17 +28,19 @@ const ModalBottom: FC<Props> = ({
       onRequestClose={onRequestClose}>
       <View style={styles.modalContainer}>
         <View style={styles.modalView}>
-          <View>
-            <Text style={[styles.sectionTitle, {fontFamily: FONT.BOLD}]}>
-              {title}
-            </Text>
-            {desc && (
-              <Text style={[styles.sectionTitle, {fontFamily: FONT.REGULAR}]}>
-                {desc}
+          <ScrollView showsHorizontalScrollIndicator={false}>
+            <View>
+              <Text style={[styles.sectionTitle, {fontFamily: FONT.BOLD}]}>
+                {title}
               </Text>
-            )}
-          </View>
-          <View style={{marginVertical: metrics.mediumRS}}>{children}</View>
+              {desc && (
+                <Text style={[styles.sectionTitle, {fontFamily: FONT.REGULAR}]}>
+                  {desc}
+                </Text>
+              )}
+            </View>
+            <View style={{marginVertical: metrics.mediumRS}}>{children}</View>
+          </ScrollView>
           <Button
             title={strings.done}
             onPress={() => {
@@ -60,6 +64,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     width: '100%',
+    maxHeight: metrics.height * 0.75,
     paddingHorizontal: metrics.largeRS,
     paddingVertical: metrics.extraLargeRS,
 

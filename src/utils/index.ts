@@ -9,6 +9,7 @@ const COLORS = {
   BLUE: '#344659',
   BACKGROUND_SCREEN: '#FFFDFF',
   YELLOW: '#EDB258',
+  CYAN: '#57DDBB',
 };
 
 const FONT = {

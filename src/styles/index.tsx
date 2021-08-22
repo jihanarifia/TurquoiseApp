@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { COLORS, FONT } from '../utils';
+import {COLORS, FONT} from '../utils';
 import metrics from './metrics';
 
 const styles = StyleSheet.create({
@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: metrics.regularRS,
     backgroundColor: COLORS.BACKGROUND_SCREEN,
+    height: metrics.height,
   },
   sectionContainer: {
     marginVertical: metrics.mediumSize,
@@ -73,6 +74,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignSelf: 'flex-start',
+  },
+  buttonSubmit: {
+    position: 'absolute',
+    bottom: 0,
+    width: metrics.width * 0.9,
+    alignSelf: 'center',
+    marginBottom: metrics.regularRS,
   },
 });
 
