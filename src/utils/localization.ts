@@ -1,5 +1,6 @@
 const strings = {
   add: 'Add',
+  addPatient: 'Add Patient',
   addReason: 'Add Reason',
   bookDoctor: 'Book a Doctor',
   choosePatient: 'Choose Patient:',
@@ -8,7 +9,7 @@ const strings = {
   done: 'Done',
   next: 'Next',
   now: 'Now',
-
+  patientName: 'Patient name',
   placeholderSymptomp: 'e.g. Cough',
   scheduleAppointment: 'Schedule Appointment',
   scheduleAppointmentDesc: 'Please select date and time window:',

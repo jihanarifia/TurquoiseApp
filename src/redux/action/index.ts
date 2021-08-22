@@ -2,6 +2,7 @@ import { IData } from "../types";
 
 export const Types = {
   CHOOSE_PATIENT: 'CHOOSE_PATIENT',
+  ADD_PATIENT: 'ADD_PATIENT',
   SWITCH_TYPE: 'SWITCH_TYPE',
   CHOOSE_SYMPTOMPS: 'CHOOSE_SYMPTOMPS',
   CHOOSE_REASON: 'CHOOSE_REASON',
@@ -13,6 +14,10 @@ export const Types = {
 export const BookDoctorActions = {
   choosePatient: (data: IData) => ({
     type: Types.CHOOSE_PATIENT,
+    payload: data,
+  }),
+  addPatient: (data: string) => ({
+    type: Types.ADD_PATIENT,
     payload: data,
   }),
   switchType: (data: string) => ({

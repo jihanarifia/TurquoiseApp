@@ -72,7 +72,6 @@ const reducer = (
       let idx: number = state.selectedPatient.findIndex(
         (x: IData) => x === action.payload,
       );
-
       if (idx >= 0) {
         selectedPatient = state.selectedPatient.filter(
           (x: IData) => x !== action.payload,
@@ -150,6 +149,14 @@ const reducer = (
         ...state,
         selectedSymptompsReasons: addData,
       };
+
+    case Types.ADD_PATIENT:
+      let addPatient = [{name: action.payload}, ...state.patienceList];
+      return {
+        ...state,
+        patienceList: addPatient,
+      };
+
     default:
       return state;
   }

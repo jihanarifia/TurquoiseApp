@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: metrics.largeRS,
     paddingVertical: metrics.extraLargeRS,
 
-    borderRadius: metrics.borderRadius,
+    borderTopLeftRadius: metrics.borderRadius,
+    borderTopRightRadius: metrics.borderRadius,
     backgroundColor: COLORS.BACKGROUND_SCREEN,
     bottom: 0,
     position: 'absolute',

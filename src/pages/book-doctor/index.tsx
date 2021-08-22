@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {connect, ConnectedProps} from 'react-redux';
 import Button from '../../components/Button';
 import Header from '../../components/header';

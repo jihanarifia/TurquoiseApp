@@ -6,6 +6,7 @@ import {BookDoctorActions} from '../../redux/action';
 import {styles} from '../../styles';
 import metrics from '../../styles/metrics';
 import {strings} from '../../utils/localization';
+import ModalPatient from './ModalPatient';
 
 interface RootState {
   patienceList: any;
@@ -13,6 +14,8 @@ interface RootState {
 }
 
 const ChoosePatient = () => {
+  const [showPatient, setShowPatient] = React.useState(false);
+
   const state = useSelector((state: RootState) => ({
     patienceList: state.patienceList,
     selectedPatient: state.selectedPatient,
@@ -32,6 +35,7 @@ const ChoosePatient = () => {
     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
       <View style={styles.addButton}>
         <TouchableOpacity
+          onPress={() => setShowPatient(true)}
           style={[
             styles.cardShadow,
             {paddingHorizontal: metrics.getWidthFromDP('8')},
@@ -50,6 +54,8 @@ const ChoosePatient = () => {
           </TouchableOpacity>
         );
       })}
+
+      <ModalPatient setShowPatient={setShowPatient} showPatient={showPatient} />
     </ScrollView>
   );
 };
