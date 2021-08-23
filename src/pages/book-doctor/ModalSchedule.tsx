@@ -8,27 +8,11 @@ import ModalBottom from '../../components/ModalBottom';
 import {useDispatch, useSelector} from 'react-redux';
 import {BookDoctorActions} from '../../redux/action';
 import {bindActionCreators} from 'redux';
-// import RNDateTimeSelector from 'react-native-date-time-scroll-picker';
 
 interface RootState {
   reasonList: any;
   selectedSymptompsReasons: any;
 }
-
-// const dataSet = {
-//   data: {
-//     firstColumn: [...Array(6).keys()].map((item, idx) => {
-//       return {value: item, index: idx};
-//     }),
-//     secondColumn: [...Array(60).keys()].map((item, idx) => {
-//       return {value: item, index: idx};
-//     }),
-//     thirdColumn: [...Array(60).keys()].map((item, idx) => {
-//       return {value: item, index: idx};
-//     }),
-//   },
-//   initials: [1, 2, 5],
-// };
 
 const ModalSchedule: React.FC<{
   showSchedule: boolean;
@@ -64,12 +48,6 @@ const ModalSchedule: React.FC<{
         <View style={[styles.col, {width: '50%', alignItems: 'center'}]}>
           <Text style={styles.dateText}>1:00 - 2:00</Text>
         </View>
-        {/* <RNDateTimeSelector
-          dataSet={dataSet}
-          onValueChange={value => {
-            console.log(' On value Change : --->  ', value);
-          }}
-        /> */}
       </View>
     </ModalBottom>
   );
